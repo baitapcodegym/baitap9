@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyển đổi tiền tệ</title>
+</head>
+<body>
+    <form>
+    <table>
+        <tr>
+            <th>Amount</th>
+            <th>From currency</th>
+            <th></th>
+            <th>To VND</th>
+        </tr>
+        <tr>
+            <td><label>
+                <input id="txtamount" type="text" name="so"/>
+            </label></td>
+            <td><select id="ddlFromCcy">
+                <option value="eur">EUR</option>;
+                <option value="usd">USD</option>;
+                <option value="yen">YEN</option>
+            </select></td>
+
+            <td><button id="btnconvers" onclick="convert();" type="button">Covert</button></td>
+            <td><label id="ccyvnd"></label></td>
+        </tr>
+
+    </table>
+    </form>
+<script>
+    function convert(){
+        let txtamount= document.getElementById('txtamount');
+        let ccyvnd = document.getElementById('ccyvnd');
+
+        var ddlFromCcy = document.getElementById("ddlFromCcy");
+        var selectedccy = ddlFromCcy.options[ddlFromCcy.selectedIndex].value;
+
+        let ketqua = 0;
+        switch (selectedccy) {
+            case 'usd':{
+                ketqua = parseInt(txtamount.value) * 22;
+                break;
+            }
+            case 'eur':{
+                ketqua = parseInt(txtamount.value) * 35;
+                break;
+            }
+            case 'yen':{
+                ketqua = parseInt(txtamount.value) * 12;
+                break;
+            }
+        }
+        ccyvnd.innerHTML = ketqua.toString();
+
+    }
+</script>
+</body>
+</html>
